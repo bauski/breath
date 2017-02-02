@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+            Take a deep Breath
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                overflow: hidden;
+                background: #fff;
+            }
+            #bg {
+                width: 100%;
+                height: auto;
+                animation: bgbreath 12s infinite;
+            }
+            @keyframes bgbreath {
+                0% {opacity: 1}
+                58% {opacity: 0.9; transform: scale(1.01,1.01)}
+                100% {opacity: 1}
+            }
+            #inner-circle {
+                width: 0px;
+                height: 0px;
+                border: 0px solid #fff;
+                border-radius: 1px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                margin-top: 0px;
+                margin-left: 0px;
+                animation: circlebreath 12s infinite;
+            }
+            @keyframes circlebreath {
+                0% {}
+                58% {
+                    width: 200px;
+                    height: 200px;
+                    border: 2px solid #fff;
+                    border-radius: 100px;
+                    margin-top: -101px;
+                    margin-left: -101px;
+                    opacity: 0.5;
+                }
+                100% {}
+            }
+            #outer-circle {
+                width: 200px;
+                height: 200px;
+                border: 2px solid #fff;
+                border-radius: 100px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                margin-top: -101px;
+                margin-left: -101px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <img id="bg" src="bg.jpg">
+        <div id="inner-circle">
+        </div>
+        <div id="outer-circle">
+        </div>
+        <script>
+            (function() {
+                var bg = document.getElementById("bg");
+                window.addEventListener("resize", function(){
+                    bgResize(bg);
+                });
+                bgResize(bg);
+                function bgResize(bg) {
+                    if(window.innerHeight/window.innerWidth > 1080/1920) {
+                        bg.style.height = window.innerHeight + "px";
+                        bg.style.width = "auto";
+                        bg.style.marginTop = "0px";
+                        bg.style.marginLeft = "-" + ((bg.width - window.innerWidth)/2) + "px";
+                    } else {
+                        bg.style.height = "auto";
+                        bg.style.width = "100%";
+                        bg.style.marginLeft = "0px";
+                        bg.style.marginTop = "-" + ((bg.height - window.innerHeight)/2) + "px";
+                    }
+                }
+            }());
+        </script>
+    </body>
+</html>    
